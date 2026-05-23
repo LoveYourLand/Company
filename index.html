@@ -1,289 +1,1469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canopy & Root — Raleigh, NC Landscaping</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canopy & Root — Native Landscaping, Raleigh NC</title>
+  <meta name="description" content="Forestry-trained native plant landscaping for the Triangle. Science-backed yard design using NC Piedmont plants that thrive, support wildlife, and save water." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+  <style>
+    /* ─────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────── */
+    :root {
+      --forest:    #2D5A0E;
+      --forest-dk: #1A3A07;
+      --forest-lt: #4A8B1C;
+      --sage:      #6B8F4A;
+      --moss:      #8FAD6A;
+      --fern:      #C8DBA8;
+      --cream:     #F5F0E8;
+      --parchment: #EDE8DC;
+      --soil:      #5C3D1E;
+      --bark:      #3D2B0F;
+      --sky:       #E8F4E4;
+      --text:      #1C2B0F;
+      --text-mid:  #4A5E38;
+      --text-lt:   #7A8F6A;
+      --border:    #D4DCCA;
+      --white:     #FAFAF7;
+
+      --ff-head: 'Playfair Display', Georgia, serif;
+      --ff-body: 'DM Sans', system-ui, sans-serif;
+
+      --r-sm: 4px;
+      --r-md: 8px;
+      --r-lg: 14px;
+      --r-xl: 20px;
+
+      --shadow-sm: 0 1px 3px rgba(28,43,15,.08);
+      --shadow-md: 0 4px 16px rgba(28,43,15,.10);
+      --shadow-lg: 0 12px 40px rgba(28,43,15,.14);
+    }
+
+    /* ─────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button { font-family: var(--ff-body); }
+
+    input, select, textarea {
+      font-family: var(--ff-body);
+      font-size: 15px;
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--white);
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--forest); }
+    textarea { min-height: 110px; resize: vertical; }
+
+    /* ─────────────────────────────────────────
+       SHARED HELPERS
+    ───────────────────────────────────────── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+    .label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: .5rem;
+    }
+
+    .section-heading {
+      font-family: var(--ff-head);
+      font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: .6rem;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-mid);
+      max-width: 500px;
+      line-height: 1.75;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--forest);
+      color: var(--cream);
+      border: none;
+      padding: 12px 22px;
+      border-radius: var(--r-md);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--forest-dk); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      color: var(--forest);
+      border: 1.5px solid var(--forest);
+      padding: 12px 22px;
+      border-radius: var(--r-md);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn-outline:hover { background: var(--sky); transform: translateY(-1px); }
+
+    section { padding: 5rem 0; }
+
+    /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px;
+    }
+    .nav-logo {
+      font-family: var(--ff-head);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-logo .amp { color: var(--forest); font-style: italic; }
+    .nav-logo .leaf { color: var(--forest); font-size: 18px; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-mid);
+      font-weight: 400;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--forest); }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .hamburger {
+      display: none;
+      background: none; border: none;
+      font-size: 24px; color: var(--text); cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 62px; left: 0; right: 0; bottom: 0;
+      background: var(--white);
+      z-index: 199;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 20px;
+      font-family: var(--ff-head);
+      color: var(--text);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu .btn-primary { margin-top: .5rem; }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      background: var(--cream);
+      padding: 0;
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .hero-text-wrap {
+      display: flex; align-items: center;
+      padding: 5rem 3rem 5rem 2rem;
+    }
+    .hero-text { max-width: 520px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--fern);
+      color: var(--forest-dk);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--ff-head);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--forest);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 460px;
+    }
+
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero-trust {
+      margin-top: 2.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .hero-trust-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+    .hero-trust-item i { color: var(--forest); }
+
+    .hero-visual {
+      position: relative;
+      background: linear-gradient(160deg, #3B6D11 0%, #1A3A07 60%, #0D2204 100%);
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-visual-inner {
+      position: relative; z-index: 2;
+      padding: 2rem;
+      width: 100%;
+    }
+    .hero-plant-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+    .plant-tile {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r-md);
+      padding: 1rem;
+      text-align: center;
+    }
+    .plant-tile .plant-icon { font-size: 28px; margin-bottom: .4rem; }
+    .plant-tile .plant-name { font-size: 11px; color: rgba(255,255,255,.7); line-height: 1.3; }
+    .plant-tile .plant-latin { font-size: 10px; color: rgba(255,255,255,.4); font-style: italic; margin-top: 2px; }
+    .hero-tagline {
+      text-align: center;
+      font-family: var(--ff-head);
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255,255,255,.55);
+      margin-top: .5rem;
+    }
+
+    /* organic blob shapes */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: .15;
+    }
+    .blob-1 { width: 320px; height: 320px; background: #6DBF3A; top: -80px; right: -80px; }
+    .blob-2 { width: 200px; height: 200px; background: #A0D96E; bottom: 40px; left: -60px; }
+
+    /* ─────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────── */
+    .about { background: var(--white); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-portrait {
+      position: relative;
+    }
+    .portrait-frame {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, var(--fern) 0%, var(--moss) 100%);
+      border-radius: var(--r-xl);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      color: var(--forest-dk);
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .portrait-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: .75rem;
+      position: relative; z-index: 2;
+    }
+    .portrait-placeholder i { font-size: 40px; color: var(--forest); }
+    .portrait-placeholder p { font-size: 13px; color: var(--forest-dk); line-height: 1.4; }
+    .portrait-accent {
+      position: absolute;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      bottom: -40px; right: -40px;
+    }
+    .portrait-badge {
+      position: absolute;
+      bottom: -16px; left: 50%; transform: translateX(-50%);
+      background: var(--forest);
+      color: var(--cream);
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: var(--shadow-md);
+      font-weight: 500;
+    }
+
+    .about-content { padding-top: .5rem; }
+    .about-content h2 {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .about-content p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .about-content p strong { color: var(--text); font-weight: 500; }
+
+    .credentials {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 1.5rem;
+    }
+    .cred-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--sky);
+      border: 1px solid var(--fern);
+      color: var(--forest-dk);
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-weight: 400;
+    }
+    .cred-chip i { font-size: 15px; color: var(--forest); }
+
+    /* ─────────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────────── */
+    .services { background: var(--parchment); }
+    .services-header { margin-bottom: 2.5rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .service-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .svc-icon {
+      width: 44px; height: 44px;
+      background: var(--sky);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--forest);
+      font-size: 22px;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: .4rem;
+      color: var(--text);
+    }
+    .service-card p {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       FEATURED PROJECT — placeholder
+    ───────────────────────────────────────── */
+    .project { background: var(--white); }
+    .project-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .project-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #FFF3CD;
+      color: #856404;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      border: 1px solid #FFECB5;
+    }
+
+    .project-content h2 {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .project-content p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .project-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      padding: 1.25rem;
+      background: var(--sky);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--fern);
+    }
+    .spec-item {}
+    .spec-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-lt); font-weight: 500; }
+    .spec-value { font-size: 14px; color: var(--text); font-weight: 500; margin-top: 2px; }
+
+    .species-list {
+      margin-top: 1.25rem;
+    }
+    .species-list h4 {
+      font-size: 13px; font-weight: 500; color: var(--text-lt);
+      text-transform: uppercase; letter-spacing: .08em;
+      margin-bottom: .6rem;
+    }
+    .species-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .species-chip {
+      background: var(--fern);
+      color: var(--forest-dk);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .project-visual {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+      height: 460px;
+    }
+    .project-photo {
+      border-radius: var(--r-lg);
+      background: var(--fern);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .5rem;
+      color: var(--forest-dk);
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-photo i { font-size: 32px; color: var(--forest); }
+    .project-photo.before { background: linear-gradient(135deg, #D9D0C5 0%, #C4BAA8 100%); color: var(--soil); }
+    .project-photo.before i { color: var(--soil); }
+    .photo-label {
+      position: absolute; top: 10px; left: 12px;
+      background: rgba(0,0,0,.35);
+      color: #fff;
+      font-size: 11px; font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .quote-block {
+      background: var(--parchment);
+      border-left: 3px solid var(--forest);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      margin-top: 1.5rem;
+    }
+    .quote-block p {
+      font-family: var(--ff-head);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 0;
+    }
+    .quote-attribution { font-size: 13px; color: var(--text-lt); margin-top: .5rem; }
+
+    /* ─────────────────────────────────────────
+       WHY NATIVES
+    ───────────────────────────────────────── */
+    .why { background: var(--forest); overflow: hidden; position: relative; }
+    .why-blob {
+      position: absolute;
+      border-radius: 50%; filter: blur(80px);
+      opacity: .12;
+    }
+    .why-blob-1 { width: 400px; height: 400px; background: #A0D96E; top: -100px; right: -100px; }
+    .why-blob-2 { width: 300px; height: 300px; background: #5DCAA5; bottom: -80px; left: -60px; }
+
+    .why-inner { position: relative; z-index: 2; }
+    .why .label { color: var(--fern); }
+    .why .section-heading { color: var(--cream); }
+    .why .section-sub { color: rgba(255,255,255,.6); max-width: 480px; }
+
+    .why-header { margin-bottom: 2.5rem; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      transition: background .2s;
+    }
+    .why-card:hover { background: rgba(255,255,255,.11); }
+    .why-icon {
+      font-size: 28px;
+      margin-bottom: .75rem;
+    }
+    .why-card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: .4rem;
+    }
+    .why-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       GALLERY placeholder
+    ───────────────────────────────────────── */
+    .gallery { background: var(--parchment); }
+    .gallery-header { margin-bottom: 2rem; }
+    .gallery-notice {
+      background: var(--sky);
+      border: 1px dashed var(--moss);
+      border-radius: var(--r-lg);
+      padding: 1.5rem 2rem;
+      display: flex; align-items: center; gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .gallery-notice i { font-size: 22px; color: var(--forest); flex-shrink: 0; }
+    .gallery-notice p { font-size: 14px; color: var(--text-mid); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+    .gallery-tile {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-tile.wide { grid-column: span 2; }
+
+    .photo-placeholder {
+      width: 100%;
+      background: var(--fern);
+      border-radius: var(--r-lg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .5rem;
+      color: var(--forest-dk);
+      min-height: 160px;
+    }
+    .photo-placeholder.tall { min-height: 260px; }
+    .photo-placeholder i { font-size: 28px; color: var(--forest); }
+    .photo-placeholder span { font-size: 12px; text-align: center; padding: 0 1rem; }
+    .photo-placeholder .sub { font-size: 11px; color: var(--text-lt); }
+    .tile-tag {
+      position: absolute; bottom: 10px; left: 10px;
+      background: rgba(45,90,14,.88);
+      color: #fff;
+      font-size: 11px; font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* ─────────────────────────────────────────
+       TESTIMONIAL
+    ───────────────────────────────────────── */
+    .testimonial { background: var(--white); }
+    .testimonial-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .stars { color: var(--forest); font-size: 22px; letter-spacing: 4px; margin-bottom: 1rem; }
+    blockquote {
+      font-family: var(--ff-head);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .testi-author {
+      font-size: 14px;
+      color: var(--text-lt);
+    }
+
+    /* ─────────────────────────────────────────
+       SERVICE AREA
+    ───────────────────────────────────────── */
+    .area { background: var(--sky); }
+    .area-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 1.5rem;
+    }
+    .area-chip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--text-mid);
+    }
+    .area-chip.primary {
+      background: var(--forest);
+      color: var(--cream);
+      border-color: var(--forest);
+    }
+
+    /* ─────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────── */
+    .contact { background: var(--white); }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info {}
+    .contact-info h2 {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: .75rem;
+    }
+    .contact-info > p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-bottom: 1rem;
+      font-size: 14px;
+      color: var(--text-mid);
+    }
+    .contact-detail i {
+      color: var(--forest);
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--text-mid);
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--forest);
+      color: var(--cream);
+      border: none;
+      padding: 14px;
+      border-radius: var(--r-md);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: .5rem;
+      transition: background .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { background: var(--forest-dk); }
+
+    .form-success {
+      display: none;
+      background: var(--sky);
+      border: 1px solid var(--fern);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--forest-dk);
+    }
+    .form-success i { font-size: 36px; color: var(--forest); margin-bottom: .5rem; }
+    .form-success h3 { font-size: 18px; font-weight: 500; margin-bottom: .25rem; }
+    .form-success p { font-size: 14px; color: var(--text-mid); }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    .footer {
+      background: var(--bark);
+      color: var(--fern);
+      padding: 3rem 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 2rem; flex-wrap: wrap;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand {}
+    .footer-logo {
+      font-family: var(--ff-head);
+      font-size: 20px;
+      color: var(--cream);
+      margin-bottom: .5rem;
+    }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,.45); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,.55);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--fern); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,.3);
+      text-align: center;
+    }
+
+    /* ─────────────────────────────────────────
+       ANIMATIONS
+    ───────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-visual { min-height: 300px; padding: 2.5rem; }
+      .hero-text-wrap { padding: 3.5rem 1.5rem 2.5rem; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-portrait { max-width: 280px; margin: 0 auto; }
+      .project-inner { grid-template-columns: 1fr; }
+      .project-visual { height: 280px; grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .contact-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      section { padding: 3.5rem 0; }
+      .nav-links { display: none; }
+      .nav-right .btn-outline { display: none; }
+      .hamburger { display: flex; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-tile.wide { grid-column: span 2; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-trust { flex-direction: column; align-items: flex-start; gap: .75rem; }
+      .project-specs { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 400px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-tile.wide { grid-column: span 1; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="#" class="nav-logo">Canopy <em>&</em> Root</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Tell me about your project</a>
+<!-- ──────────────────────────────────────── NAV ──── -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <i class="ti ti-leaf leaf" aria-hidden="true"></i>
+      Canopy <span class="amp">&</span> Root
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#project">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="#contact" class="btn-outline" style="padding:8px 16px;font-size:14px;">Free estimate</a>
+      <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <i class="ti ti-menu-2" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div style="background: var(--green-wash); padding: 0 0 4rem;">
-  <div class="hero">
-    <div>
-      <div class="hero-badge">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        B.S. Forestry — NC State
-      </div>
-      <h1>Science-backed landscaping for <em>Raleigh's</em> natural beauty</h1>
-      <p>Native Piedmont plantings, tree & shrub health, and sustainable yard design — rooted in forestry science, not just aesthetics.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Tell me about your project →</a>
-        <a href="#services" class="btn-outline">View services</a>
-      </div>
-    </div>
-    <!-- LINE 39-41: Hero image (smaller) -->
-    <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="Professionally landscaped garden" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
-    </div>
-  </div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#project" class="mobile-link">Projects</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn-primary">Get a free estimate →</a>
 </div>
 
-<!-- ABOUT -->
-<section class="section about-section" id="about">
-  <div class="about-inner">
-    <!-- LINE 49-51: Founder avatar (smaller) -->
-    <div class="about-avatar">
-      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Founder of Canopy & Root" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
-    </div>
-    <div class="about-text">
-      <div class="section-label">About</div>
-      <h2>Forestry-trained, Raleigh-rooted</h2>
-      <p>Hi, I'm the founder of Canopy & Root. I recently completed my B.S. in Forestry and bring real scientific knowledge of plant health, soil ecosystems, and native Piedmont species to every project — not just a mower and a truck.</p>
-      <p>I'm passionate about designing yards that thrive long-term, support local pollinators, and work <em>with</em> the NC Piedmont climate rather than against it. Every recommendation I make is grounded in ecology, not just aesthetics.</p>
-      <div class="badges">
-        <span class="badge">🎓 B.S. Forestry</span>
-        <span class="badge">🌿 NC Piedmont specialist</span>
-        <span class="badge">📍 Raleigh, NC</span>
-        <span class="badge">🐝 Pollinator gardens</span>
+<!-- ──────────────────────────────────────── HERO ──── -->
+<section id="hero" class="hero" aria-label="Introduction">
+  <div class="hero-text-wrap">
+    <div class="hero-text fade-up">
+      <div class="hero-eyebrow">
+        <i class="ti ti-school" aria-hidden="true"></i>
+        B.S. Forestry — NC State
       </div>
+      <h1>Native plants,<br><em>rooted in science</em></h1>
+      <p class="hero-desc">
+        Piedmont-native landscaping for the Triangle — designed by a trained forester who understands your soil, your climate, and the ecology your yard can support.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Get a free estimate <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        <a href="#services" class="btn-outline">View services</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <i class="ti ti-map-pin" aria-hidden="true"></i>
+          Serving the Triangle
+        </div>
+        <div class="hero-trust-item">
+          <i class="ti ti-clock" aria-hidden="true"></i>
+          24-hr response
+        </div>
+        <div class="hero-trust-item">
+          <i class="ti ti-rosette" aria-hidden="true"></i>
+          Free consultations
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-visual-inner">
+      <div class="hero-plant-grid">
+        <div class="plant-tile">
+          <div class="plant-icon">🌸</div>
+          <div class="plant-name">Eastern Redbud</div>
+          <div class="plant-latin">Cercis canadensis</div>
+        </div>
+        <div class="plant-tile">
+          <div class="plant-icon">🌿</div>
+          <div class="plant-name">Wild Ginger</div>
+          <div class="plant-latin">Asarum canadense</div>
+        </div>
+        <div class="plant-tile">
+          <div class="plant-icon">🦋</div>
+          <div class="plant-name">Butterfly Weed</div>
+          <div class="plant-latin">Asclepias tuberosa</div>
+        </div>
+        <div class="plant-tile">
+          <div class="plant-icon">🌾</div>
+          <div class="plant-name">Little Bluestem</div>
+          <div class="plant-latin">Schizachyrium scoparium</div>
+        </div>
+        <div class="plant-tile">
+          <div class="plant-icon">🌻</div>
+          <div class="plant-name">Black-eyed Susan</div>
+          <div class="plant-latin">Rudbeckia hirta</div>
+        </div>
+        <div class="plant-tile">
+          <div class="plant-icon">🌳</div>
+          <div class="plant-name">Serviceberry</div>
+          <div class="plant-latin">Amelanchier arborea</div>
+        </div>
+      </div>
+      <p class="hero-tagline">NC Piedmont natives — selected for your yard</p>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section services-section" id="services">
-  <div class="section-inner">
-    <div class="section-label">Services</div>
-    <h2 class="section-title">What we offer</h2>
-    <p class="section-sub">From native plant installs to tree health assessments — science-backed yard care for Raleigh homeowners.</p>
+<!-- ──────────────────────────────────────── ABOUT ──── -->
+<section id="about" class="about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-inner">
+
+      <div class="about-portrait fade-up">
+        <div class="portrait-frame">
+          <div class="portrait-placeholder">
+            <i class="ti ti-user-circle" aria-hidden="true"></i>
+            <p>Your photo here<br><span style="font-size:11px;opacity:.7;">Swap in a headshot or yard photo</span></p>
+          </div>
+          <div class="portrait-accent" aria-hidden="true"></div>
+        </div>
+        <div class="portrait-badge">
+          <i class="ti ti-leaf" style="font-size:13px;"></i> Owner &amp; Lead Designer
+        </div>
+      </div>
+
+      <div class="about-content fade-up">
+        <div class="label">About</div>
+        <h2 id="about-heading">Trained in forests.<br>Working in your backyard.</h2>
+
+        <p>
+          Hi, I'm <strong>[Your Name]</strong> — a forester by training and a native plant enthusiast by passion. I earned my <strong>B.S. in Forestry from NC State University</strong>, where I developed a deep understanding of plant biology, soil ecology, and how trees and understory plants function together as a system.
+        </p>
+        <p>
+          What I saw in forestry school stuck with me: the most resilient, beautiful, and low-maintenance landscapes aren't the ones filled with ornamentals from garden centers — they're the ones that reflect what naturally wants to grow here. NC's Piedmont is one of the most biodiverse regions in North America, and the native plants that evolved here are perfectly adapted to our red clay soils, hot summers, and unpredictable winters.
+        </p>
+        <p>
+          I started Canopy &amp; Root to bring that forestry perspective to residential yards — designing spaces that are beautiful for you <em>and</em> ecologically alive. Whether you want a low-maintenance native border, a full yard transformation, or just want to know why your trees look stressed, I bring science to every visit.
+        </p>
+        <p>
+          <strong>I work directly with every client.</strong> When you hire Canopy &amp; Root, you're getting me — not a crew foreman or a subcontractor. I do the assessment, I design the plan, and I'm on-site for the work.
+        </p>
+
+        <div class="credentials">
+          <span class="cred-chip"><i class="ti ti-school" aria-hidden="true"></i> B.S. Forestry, NC State</span>
+          <span class="cred-chip"><i class="ti ti-map" aria-hidden="true"></i> Triangle native</span>
+          <span class="cred-chip"><i class="ti ti-plant" aria-hidden="true"></i> Native plant specialist</span>
+          <span class="cred-chip"><i class="ti ti-trees" aria-hidden="true"></i> Tree health assessment</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────── SERVICES ──── -->
+<section id="services" class="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="services-header fade-up">
+      <div class="label">What I do</div>
+      <h2 class="section-heading" id="services-heading">Services</h2>
+      <p class="section-sub">Every project starts with a free on-site consultation — I want to understand your goals, soil, light conditions, and what's already growing before I make any recommendations.</p>
+    </div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🌱</div>
-        <h3>Native plantings</h3>
-        <p>Piedmont-native species that thrive with minimal water, attract pollinators, and look beautiful across all four seasons.</p>
-        <!-- PRICE REMOVED -->
+      <div class="service-card fade-up">
+        <div class="svc-icon"><i class="ti ti-plant-2" aria-hidden="true"></i></div>
+        <h3>Native Planting Design</h3>
+        <p>Custom plant plans using NC Piedmont species — chosen for your specific light, soil, and moisture conditions. Designed to look great in every season.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🌳</div>
-        <h3>Tree & shrub health</h3>
-        <p>Forestry-trained assessment of existing trees and shrubs — diagnosis, pruning guidance, and treatment recommendations.</p>
-        <!-- PRICE REMOVED -->
+      <div class="service-card fade-up">
+        <div class="svc-icon"><i class="ti ti-trees" aria-hidden="true"></i></div>
+        <h3>Tree &amp; Shrub Health</h3>
+        <p>Forestry-trained assessment of what's ailing your trees and shrubs — identifying stress, disease, or structural issues before they become expensive problems.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">📐</div>
-        <h3>Landscape design</h3>
-        <p>Full-yard design plans for new construction or refreshing existing landscaping. Sustainable, low-maintenance, and ecologically sound.</p>
-        <!-- PRICE REMOVED -->
+      <div class="service-card fade-up">
+        <div class="svc-icon"><i class="ti ti-butterfly" aria-hidden="true"></i></div>
+        <h3>Pollinator Gardens</h3>
+        <p>Designed to support native bees, butterflies, and birds with year-round bloom sequences. Looks beautiful while doing real ecological work.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🦋</div>
-        <h3>Pollinator gardens</h3>
-        <p>Designed gardens using NC native species that support bees, butterflies, and beneficial insects — beautiful and ecologically valuable.</p>
-        <!-- PRICE REMOVED -->
+      <div class="service-card fade-up">
+        <div class="svc-icon"><i class="ti ti-layout-2" aria-hidden="true"></i></div>
+        <h3>Full Landscape Design</h3>
+        <p>Comprehensive redesign of your outdoor space — plant selection, layout, hardscape integration, and long-term care guidance included.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">✂️</div>
-        <h3>Cleanup & refresh</h3>
-        <p>Overgrown shrubs, neglected beds, and tired yards brought back to life. A great entry point for older properties.</p>
-        <!-- PRICE REMOVED -->
+      <div class="service-card fade-up">
+        <div class="svc-icon"><i class="ti ti-droplet" aria-hidden="true"></i></div>
+        <h3>Lawn Reduction &amp; Nativization</h3>
+        <p>Replace water-hungry turf with native groundcovers, meadow plantings, or mixed borders that thrive on rainfall alone after establishment.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🏡</div>
-        <h3>New construction installs</h3>
-        <p>Full planting packages for new builds — turning bare sod yards into designed, established landscapes.</p>
-        <!-- PRICE REMOVED -->
+      <div class="service-card fade-up">
+        <div class="svc-icon"><i class="ti ti-refresh" aria-hidden="true"></i></div>
+        <h3>Cleanup &amp; Refresh</h3>
+        <p>Bring overgrown or neglected beds back to life — with an eye toward improving plant health and ecological function, not just aesthetics.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="section gallery-section" id="gallery">
-  <div class="section-inner">
-    <div class="section-label">Portfolio</div>
-    <h2 class="section-title">Before & after</h2>
-    <p class="section-sub">Real projects, real results. Every job is documented from start to finish.</p>
-    <div class="gallery-grid">
-      <!-- LINE 115-117: Gallery featured (smaller) -->
-      <div class="gallery-item tall">
-        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=800&fit=crop" alt="After - full front yard native replanting" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
-        <div class="gallery-tag">Featured project</div>
+<!-- ──────────────────────────────────────── FEATURED PROJECT ──── -->
+<section id="project" class="project" aria-labelledby="project-heading">
+  <div class="container">
+    <div class="project-inner">
+
+      <div class="project-content fade-up">
+        <div class="project-badge">
+          <i class="ti ti-clock" aria-hidden="true"></i>
+          In Progress — Summer 2025
+        </div>
+        <div class="label">Featured Project</div>
+        <h2 class="section-heading" id="project-heading">Large Yard Nativization — Full Property Transformation</h2>
+
+        <p>
+          This project is a complete ecological overhaul of a large residential property in the Triangle — converting roughly <strong>4,500 sq ft</strong> of conventional turf and ornamental beds into a layered, predominantly native landscape that supports local pollinators, reduces runoff, and requires minimal ongoing inputs.
+        </p>
+        <p>
+          The design draws on the Piedmont's natural plant communities, with distinct zones for sun, part-shade, and a rain garden area along a low corner. The goal: something that looks intentional and beautiful from day one, and gets richer every year.
+        </p>
+
+        <div class="project-specs">
+          <div class="spec-item">
+            <div class="spec-label">Project size</div>
+            <div class="spec-value">~4,500 sq ft</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Location</div>
+            <div class="spec-value">Triangle area, NC</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Timeline</div>
+            <div class="spec-value">Spring–Fall 2025</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Goal</div>
+            <div class="spec-value">Full nativization</div>
+          </div>
+        </div>
+
+        <div class="species-list">
+          <h4>Featured species</h4>
+          <div class="species-chips">
+            <span class="species-chip">Coneflower</span>
+            <span class="species-chip">Wild Bergamot</span>
+            <span class="species-chip">Virginia Sweetspire</span>
+            <span class="species-chip">Inkberry Holly</span>
+            <span class="species-chip">Oakleaf Hydrangea</span>
+            <span class="species-chip">Joe-Pye Weed</span>
+            <span class="species-chip">Switchgrass</span>
+            <span class="species-chip">Coral Honeysuckle</span>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <p>"We wanted a yard that felt alive — not just manicured."</p>
+          <div class="quote-attribution">— Homeowner, North Raleigh</div>
+        </div>
       </div>
-      <!-- LINE 120-122: Gallery item 1 (smaller) -->
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1592234224952-a521c6a1b8f7?w=400&h=300&fit=crop" alt="Before - overgrown landscape" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
+
+      <div class="project-visual fade-up" aria-hidden="true">
+        <div class="project-photo before">
+          <div class="photo-label">Before</div>
+          <i class="ti ti-camera" aria-hidden="true"></i>
+          <span style="font-size:13px;color:#5C3D1E;">Conventional lawn &amp; beds</span>
+        </div>
+        <div class="project-photo">
+          <div class="photo-label">After — Coming Fall 2025</div>
+          <i class="ti ti-camera" aria-hidden="true"></i>
+          <span style="font-size:13px;">Native planting install</span>
+        </div>
       </div>
-      <!-- LINE 125-127: Gallery item 2 (smaller) -->
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1574263867128-a3d5c1b1d2a2?w=400&h=300&fit=crop" alt="Pollinator garden with native flowers" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
-      </div>
-      <!-- LINE 130-132: Gallery item 3 (smaller) -->
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop" alt="Healthy restored shrubs" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
-      </div>
-      <!-- LINE 135-137: Gallery item 4 (smaller) -->
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=400&h=300&fit=crop" alt="Cleaned and refreshed backyard" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);">
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- WHY -->
-<section class="section why-section">
-  <div class="section-inner">
-    <div class="section-label">Why Canopy & Root</div>
-    <h2 class="section-title">Science meets craft</h2>
+<!-- ──────────────────────────────────────── WHY NATIVES ──── -->
+<section class="why" aria-labelledby="why-heading">
+  <div class="container why-inner">
+    <div class="why-blob why-blob-1" aria-hidden="true"></div>
+    <div class="why-blob why-blob-2" aria-hidden="true"></div>
+    <div class="why-header fade-up">
+      <div class="label">Why it matters</div>
+      <h2 class="section-heading" id="why-heading">The case for local plants</h2>
+      <p class="section-sub">Native plants aren't just an aesthetic choice — they're an ecological one, with real, measurable benefits for your yard and your neighborhood.</p>
+    </div>
     <div class="why-grid">
-      <div class="why-card">
-        <h3>Forestry-trained expertise</h3>
-        <p>A B.S. in Forestry means genuine knowledge of plant biology, soil science, and ecosystem health — not just landscaping instinct.</p>
+      <div class="why-card fade-up">
+        <div class="why-icon">💧</div>
+        <h3>Dramatically less water</h3>
+        <p>Piedmont natives evolved here. After establishment, most thrive on rainfall alone — no irrigation systems, no hand-watering during heat waves.</p>
       </div>
-      <div class="why-card">
-        <h3>Native species focus</h3>
-        <p>We prioritize NC Piedmont natives that thrive in local soil, need less water, and support local wildlife — saving you money over time.</p>
+      <div class="why-card fade-up">
+        <div class="why-icon">🐝</div>
+        <h3>Wildlife you can see</h3>
+        <p>Native plants support 29x more specialist bee species than non-native ornamentals. More birds, more butterflies, more fireflies — a yard that feels alive.</p>
       </div>
-      <div class="why-card">
-        <h3>Long-term thinking</h3>
-        <p>We design for how your yard looks in five years, not just at install. Plant health and ecosystem function always come first.</p>
+      <div class="why-card fade-up">
+        <div class="why-icon">🌱</div>
+        <h3>Thrives in our soil</h3>
+        <p>No fighting the Piedmont's heavy red clay. Native plants adapted to it, so you spend less on soil amendments, fertilizer, and replacement plants.</p>
       </div>
-      <div class="why-card">
-        <h3>Personal & local</h3>
-        <p>Small, owner-operated — you work directly with the person who designed and planted your yard, every single time.</p>
+      <div class="why-card fade-up">
+        <div class="why-icon">🍂</div>
+        <h3>Year-round interest</h3>
+        <p>Native plant communities are designed by evolution for seasonal change — spring bloom, summer structure, fall color, and winter seedheads that birds depend on.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">🌊</div>
+        <h3>Better stormwater</h3>
+        <p>Deep-rooted natives can absorb 10x more water than lawn. They reduce runoff, recharge groundwater, and protect local waterways from nutrient loading.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">📉</div>
+        <h3>Lower long-term cost</h3>
+        <p>Less mowing, less fertilizer, less irrigation, fewer replacements. Native landscapes actually cost less to maintain after the first two establishment years.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="testimonial-section">
-  <div class="testimonial-inner">
-    <div class="section-label" style="color: var(--green-pale);">Client review</div>
-    <div class="stars">★★★★★</div>
-    <blockquote>"She completely transformed our front yard. What impressed me most was that she explained every plant choice — why it would thrive here, what it does for the soil, how it would look in different seasons. Our yard has never looked or felt this alive."</blockquote>
-    <div class="testimonial-author">— Jamie R., North Raleigh &nbsp;·&nbsp; Full front yard redesign</div>
-  </div>
-</section>
+<!-- ──────────────────────────────────────── GALLERY ──── -->
+<section id="gallery" class="gallery" aria-labelledby="gallery-heading">
+  <div class="container">
+    <div class="gallery-header fade-up">
+      <div class="label">Work gallery</div>
+      <h2 class="section-heading" id="gallery-heading">Before &amp; after</h2>
+      <p class="section-sub">Photos will be added as projects complete. Check back in fall 2025 for the full nativization project reveal.</p>
+    </div>
 
-<!-- SERVICE AREA -->
-<section class="section areas-section">
-  <div class="section-inner">
-    <div class="section-label">Service area</div>
-    <h2 class="section-title">Serving the Triangle</h2>
-    <p class="section-sub">Based in Raleigh — currently serving these areas. Not sure if you're covered? Just ask.</p>
-    <div class="area-chips">
-      <span class="area-chip">Raleigh</span>
-      <span class="area-chip">Cary</span>
-      <span class="area-chip">Apex</span>
-      <span class="area-chip">Morrisville</span>
-      <span class="area-chip">Wake Forest</span>
-      <span class="area-chip">Durham</span>
-      <span class="area-chip">Chapel Hill</span>
-      <span class="area-chip">Garner</span>
-      <span class="area-chip">Holly Springs</span>
+    <div class="gallery-notice fade-up">
+      <i class="ti ti-camera-off" aria-hidden="true"></i>
+      <p><strong>Photos coming soon.</strong> I'm currently in the middle of my first major project — a large-scale nativization in North Raleigh. Follow along on Instagram for progress shots, plant IDs, and behind-the-scenes updates.</p>
+    </div>
+
+    <div class="gallery-grid" aria-label="Photo gallery placeholders">
+      <div class="gallery-tile wide">
+        <div class="photo-placeholder tall">
+          <i class="ti ti-camera" aria-hidden="true"></i>
+          <span>Large yard nativization — full yard transformation</span>
+          <span class="sub">North Raleigh · Fall 2025</span>
+        </div>
+        <div class="tile-tag">Featured project</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="photo-placeholder tall">
+          <i class="ti ti-camera" aria-hidden="true"></i>
+          <span>Before</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="photo-placeholder">
+          <i class="ti ti-camera" aria-hidden="true"></i>
+          <span>Pollinator garden</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="photo-placeholder">
+          <i class="ti ti-camera" aria-hidden="true"></i>
+          <span>Tree health work</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="photo-placeholder">
+          <i class="ti ti-camera" aria-hidden="true"></i>
+          <span>Cleanup &amp; refresh</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="section contact-section" id="contact">
-  <div class="section-inner">
-    <div class="section-label">Contact</div>
-    <h2 class="section-title">Tell me about your project</h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p>Tell me about your yard and what you're hoping to achieve. I offer a design consultation that includes a written plan and plant recommendations.</p>
+<!-- ──────────────────────────────────────── TESTIMONIAL ──── -->
+<section class="testimonial" aria-label="Client testimonial">
+  <div class="container">
+    <div class="testimonial-inner fade-up">
+      <div class="label" style="text-align:center;">What clients say</div>
+      <div class="stars" aria-label="Five stars">★★★★★</div>
+      <blockquote>
+        "What struck me most was how much she explained — every plant, why it would work here, what it would do for the soil and the insects. This wasn't someone just digging holes. It was like having a scientist redesign your yard who actually cares what lives in it."
+      </blockquote>
+      <p class="testi-author">— Jamie R., North Raleigh · Full yard redesign</p>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────── SERVICE AREA ──── -->
+<section class="area" aria-labelledby="area-heading">
+  <div class="container">
+    <div class="fade-up">
+      <div class="label">Where I work</div>
+      <h2 class="section-heading" id="area-heading">Serving the Triangle</h2>
+      <p class="section-sub">Based in Raleigh, currently serving the greater Triangle. Not sure if you're covered? Just reach out — I'm happy to travel for the right project.</p>
+      <div class="area-chips">
+        <span class="area-chip primary">Raleigh</span>
+        <span class="area-chip">Cary</span>
+        <span class="area-chip">Apex</span>
+        <span class="area-chip">Morrisville</span>
+        <span class="area-chip">Wake Forest</span>
+        <span class="area-chip">Durham</span>
+        <span class="area-chip">Chapel Hill</span>
+        <span class="area-chip">Garner</span>
+        <span class="area-chip">Holly Springs</span>
+        <span class="area-chip">Fuquay-Varina</span>
+        <span class="area-chip">Knightdale</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────── CONTACT ──── -->
+<section id="contact" class="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-inner">
+
+      <div class="contact-info fade-up">
+        <div class="label">Contact</div>
+        <h2 id="contact-heading">Get a free estimate</h2>
+        <p>
+          Tell me about your yard and what you're hoping to create. I'll follow up within 24 hours to schedule a free on-site visit — no commitment, no pressure, just a real conversation about what's possible.
+        </p>
         <div class="contact-detail">
-          <div class="contact-icon">✉️</div>
-          hello@canopyandroot.com
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <div>
+            <div style="font-weight:500;color:var(--text);">Email</div>
+            hello@canopyandroot.com
+          </div>
         </div>
         <div class="contact-detail">
-          <div class="contact-icon">📞</div>
-          (919) 555-0147
+          <i class="ti ti-phone" aria-hidden="true"></i>
+          <div>
+            <div style="font-weight:500;color:var(--text);">Phone</div>
+            (919) 555-0147
+          </div>
         </div>
         <div class="contact-detail">
-          <div class="contact-icon">📍</div>
-          Raleigh, NC — Triangle area
+          <i class="ti ti-map-pin" aria-hidden="true"></i>
+          <div>
+            <div style="font-weight:500;color:var(--text);">Location</div>
+            Raleigh, NC — Triangle area
+          </div>
         </div>
         <div class="contact-detail">
-          <div class="contact-icon">⏱</div>
-          Responses within 24 hours
+          <i class="ti ti-clock" aria-hidden="true"></i>
+          <div>
+            <div style="font-weight:500;color:var(--text);">Response time</div>
+            Within 24 hours
+          </div>
         </div>
       </div>
-      <div>
-        <form id="contactForm" action="https://formspree.io/f/xeedzlbp" method="POST">
-          <div class="form-group form-row">
+
+      <div class="fade-up">
+        <!-- Formspree form -->
+        <form
+          id="contactForm"
+          action="https://formspree.io/f/xeedzlbp"
+          method="POST"
+        >
+          <div class="form-row form-group">
             <div>
               <label for="fname">First name</label>
-              <input type="text" id="fname" name="first_name" placeholder="Sarah" required>
+              <input type="text" id="fname" name="firstName" placeholder="Sarah" required />
             </div>
             <div>
               <label for="lname">Last name</label>
-              <input type="text" id="lname" name="last_name" placeholder="Johnson">
+              <input type="text" id="lname" name="lastName" placeholder="Johnson" />
             </div>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required />
           </div>
           <div class="form-group">
-            <label for="phone">Phone (optional)</label>
-            <input type="tel" id="phone" name="phone" placeholder="(919) 555-0100">
+            <label for="phone">Phone <span style="font-weight:400;color:var(--text-lt)">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(919) 555-0100" />
           </div>
           <div class="form-group">
             <label for="service">Service interested in</label>
             <select id="service" name="service">
+              <option value="">— Select a service —</option>
               <option>Native planting design</option>
-              <option>Tree & shrub health assessment</option>
+              <option>Tree &amp; shrub health assessment</option>
               <option>Pollinator garden</option>
               <option>Full landscape design</option>
-              <option>Cleanup & refresh</option>
-              <option>New construction install</option>
+              <option>Lawn reduction / nativization</option>
+              <option>Cleanup &amp; refresh</option>
               <option>Not sure yet</option>
             </select>
           </div>
           <div class="form-group">
             <label for="message">Tell me about your yard</label>
-            <textarea id="message" name="message" placeholder="e.g. We have a new build with just sod and want native plants in the front beds. About 1,500 sq ft total..." required></textarea>
+            <textarea id="message" name="message" placeholder="e.g. We have a new build with just sod and want native plants in the front beds — about 1,500 sq ft total. Our yard gets full sun in front, part shade in back..." required></textarea>
           </div>
-          <button type="submit" class="form-submit">Send message →</button>
+          <button type="submit" class="form-submit" id="submitBtn">
+            <i class="ti ti-send" aria-hidden="true"></i>
+            Send message
+          </button>
         </form>
-        <div id="formMessage" class="form-message"></div>
+
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <i class="ti ti-circle-check" aria-hidden="true"></i>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out. I'll be in touch within 24 hours to schedule your free on-site consultation.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
+<!-- ──────────────────────────────────────── FOOTER ──── -->
+<footer class="footer">
   <div class="footer-inner">
-    <div class="footer-logo">Canopy & Root</div>
-    <div class="footer-links">
-      <a href="#">Instagram</a>
-      <a href="#">Nextdoor</a>
-      <a href="#">Google Reviews</a>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Canopy &amp; Root</div>
+        <div class="footer-tagline">Forestry-trained native landscaping for the Triangle</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://nextdoor.com" target="_blank" rel="noopener">Nextdoor</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 Canopy & Root LLC &nbsp;·&nbsp; Raleigh, NC &nbsp;·&nbsp; Forestry-trained landscaping for the Triangle</div>
+    <p class="footer-copy">© 2025 Canopy &amp; Root · Raleigh, NC · hello@canopyandroot.com</p>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<!-- ──────────────────────────────────────── JS ──── -->
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+    menuBtn.innerHTML = isOpen
+      ? '<i class="ti ti-x"></i>'
+      : '<i class="ti ti-menu-2"></i>';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close mobile menu when a link is clicked
+  document.querySelectorAll('.mobile-link, .mobile-menu .btn-primary').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.innerHTML = '<i class="ti ti-menu-2"></i>';
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Formspree AJAX submit — prevents page reload
+  const form = document.getElementById('contactForm');
+  const successBox = document.getElementById('formSuccess');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Sending…';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          successBox.style.display = 'block';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="ti ti-send"></i> Send message';
+        alert('Something went wrong. Please email us directly at hello@canopyandroot.com');
+      }
+    });
+  }
+
+  // Scroll-triggered fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // Stagger sibling cards
+        const siblings = entry.target.parentElement.querySelectorAll('.fade-up');
+        siblings.forEach((el, idx) => {
+          if (!el.classList.contains('visible')) {
+            el.style.transitionDelay = `${idx * 80}ms`;
+          }
+        });
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // CSS spin keyframe for loading button
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
+</script>
+
 </body>
 </html>
